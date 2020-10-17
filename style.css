@@ -1,0 +1,38 @@
+body{
+    background-color: turquoise;
+}
+.col{
+    border: 0 solid black;
+    min-width: 30px;
+    min-height: 30px;
+    display: inline-block;
+    background-color: white;
+}
+#buttonReset{
+    width: 3cm;
+    height: 1cm;
+    margin: 1cm;
+}
+
+.container{
+    display: grid;
+    grid-template-areas:
+    "l l r r"
+    "l l r r";
+    text-align: center;
+
+}
+.containerLeft{
+    grid-area: l;
+    margin-top: 4cm;
+}
+.containerRight{
+    grid-area: r;
+    margin-top: 3cm;
+}
+footer{
+    text-align: center;
+    padding: 4cm;
+    font-size: 0.7cm;
+
+}
