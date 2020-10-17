@@ -1,13 +1,6 @@
 body{
     background-color: turquoise;
 }
-.col{
-    border: 0 solid black;
-    min-width: 30px;
-    min-height: 30px;
-    display: inline-block;
-    background-color: white;
-}
 #buttonReset{
     width: 3cm;
     height: 1cm;
@@ -29,6 +22,18 @@ body{
 .containerRight{
     grid-area: r;
     margin-top: 3cm;
+}
+
+.grid{
+    background-color: red;
+
+}
+.col{
+    border: 0 solid black;
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    background-color: white;
 }
 footer{
     text-align: center;

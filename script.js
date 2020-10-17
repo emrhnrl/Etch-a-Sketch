@@ -63,16 +63,19 @@ containerLeft.appendChild(buttonReset).id="buttonReset";
 const containerRight = document.createElement("div");
 containerRight.classList.add("containerRight");
 container.appendChild(containerRight);
-//ContainerRight Create rows and columns
+//Container ContainerRight Create rows and columns
+const grid = document.createElement("div");
+containerRight.appendChild(grid).className="grid";
 const rows = document.getElementsByClassName("row");
 const cols = document.getElementsByClassName("col");
 
 //Functions
 
 function makeRowCol(rowNum,colNum){
+
     for(let i=0;i<rowNum;i++){
         let row = document.createElement("div");
-        containerRight.appendChild(row).className="row";
+        grid.appendChild(row).className="row";
         for(let j=0;j<colNum;j++){
             let col = document.createElement("div");
             rows[i].appendChild(col).className="col";
@@ -97,8 +100,6 @@ function resetSquare(){
     })
     })
 }
-
-
 
 
 makeRowCol(20,20);
