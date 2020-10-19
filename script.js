@@ -43,8 +43,9 @@ gridColor.appendChild(h3);
 const buttonsColor = document.createElement("div");
 gridColor.appendChild(buttonsColor).className="buttonsColor";
 //Container ContainerLeft Grid Color buttonsColor Color
-const buttonColor = document.createElement("button");
-buttonColor.textContent="Color";
+const buttonColor = document.createElement("input");
+buttonColor.type="color";
+buttonColor.value="#ff0000";
 buttonsColor.appendChild(buttonColor).id="buttonColor";
 //Container ContainerLeft Grid Color buttonsColor Rainbow
 const buttonRainbow = document.createElement("button");
@@ -71,15 +72,28 @@ const cols = document.getElementsByClassName("col");
 
 //Functions
 
-function makeRowCol(rowNum,colNum){
-
-    for(let i=0;i<rowNum;i++){
+function makeGrid(customSize){
+ /*    for(let i=0;i<rowNum;i++){
         let row = document.createElement("div");
         grid.appendChild(row).className="row";
         for(let j=0;j<colNum;j++){
             let col = document.createElement("div");
             rows[i].appendChild(col).className="col";
         }
+    }
+    */
+    let Items = document.querySelectorAll(".col");
+    Items.forEach(item => {
+    item.style.backgroundColor="white";
+})
+
+    grid.style.gridTemplateColumns = `repeat(${customSize}, 1fr)`;
+    grid.style.gridTemplateRows = `repeat(${customSize}, 1fr)`;
+
+    for(let i = 0; i < customSize*customSize; i++) {
+        let gridItem = document.createElement('div');
+        gridItem.classList.add('col');
+        grid.appendChild(gridItem); 
     }
 }
 
@@ -101,7 +115,106 @@ function resetSquare(){
     })
 }
 
+function colorRainbowGrid(){
+    let cols = document.querySelectorAll('.col');
+    cols.forEach((col) => {
+        col.addEventListener('mouseover', () => { 
+            col.style.background = generateRandomColor();
+        });
+    });
+}
+function generateRandomColor() {
+    let letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
 
-makeRowCol(20,20);
+function colorGrid() {
+    let cols = document.querySelectorAll('.col');
+     cols.forEach((col) => {
+         col.addEventListener('mouseover', () => {
+             col.style.background = buttonColor.value;
+         })
+     })
+ }
+
+function colorDarken(){
+    let cols = document.querySelectorAll('.col'); 
+
+    cols.forEach((col) => {
+        col.addEventListener('mouseover', () => {
+            
+            col.counter = col.counter || 0;
+            col.counter += 1;
+            
+            if (col.counter === 1) {
+                col.style.background = '#000000';
+                col.style.opacity = '0.1';
+            } else if (col.counter === 2) {
+                col.style.background = '#000000';
+                col.style.opacity = '0.2';
+            } else if (col.counter === 3) {
+                col.style.background = '#000000';
+                col.style.opacity = '0.3';
+            } else if (col.counter === 4) {
+                col.style.background = '#000000';
+                col.style.opacity = '0.4';
+            } else if (col.counter === 5) {
+                col.style.background = '#000000';
+                col.style.opacity = '0.5';
+            } else if (col.counter === 6) {
+                col.style.background = '#000000';
+                col.style.opacity = '0.6';
+            } else if (col.counter === 7) {
+                col.style.background = '#000000';
+                col.style.opacity = '0.7';
+            } else if (col.counter === 8) {
+                col.style.background = '#000000';
+                col.style.opacity = '0.8';
+            } else if (col.counter === 9) {
+                col.style.background = '#000000';
+                col.style.opacity = '0.9';
+            } else if (col.counter === 10) {
+                col.style.background = '#000000';
+                col.style.opacity = '1';
+            } else {
+                col.style.background = '#000000';
+                col.style.opacity = '1';
+            }
+        })
+    })
+}
+
+makeGrid(100);
 colorSquare();
 resetSquare();
+
+button32.addEventListener("click",()=>{
+    makeGrid(32);
+})
+button61.addEventListener("click",()=>{
+    makeGrid(61);
+})
+buttonCustom.addEventListener("click",()=>{
+    while(1){
+        let value = prompt("Select size:","");
+        if(value>0 && value<=100){
+            makeGrid(value);
+            return;
+        }
+        else
+            value = prompt("Select size:","");
+    }
+})
+buttonRainbow.addEventListener("click",()=>{
+    colorRainbowGrid();
+})
+buttonColor.addEventListener("click",()=>{
+    colorGrid();
+})
+buttonDarken.addEventListener("click",()=>{
+    colorDarken();
+})

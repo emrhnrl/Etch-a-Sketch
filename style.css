@@ -10,8 +10,8 @@ body{
 .container{
     display: grid;
     grid-template-areas:
-    "l l r r"
-    "l l r r";
+    "l r"
+    "l r";
     text-align: center;
 
 }
@@ -25,19 +25,29 @@ body{
 }
 
 .grid{
-    background-color: red;
+    width: 600px;
+    height: 600px;
+    display: grid;
+    grid-gap: 0;
+    justify-content: stretch;
+    box-shadow: 0 0 1000px lightskyblue;
+    background: white;
+    opacity: 1;
+}
 
-}
-.col{
-    border: 0 solid black;
-    width: 25px;
-    height: 25px;
-    display: inline-block;
-    background-color: white;
-}
 footer{
     text-align: center;
     padding: 4cm;
     font-size: 0.7cm;
 
+}
+
+.gridColor{
+    padding:1cm;
+}
+.gridSize{
+    padding: 1cm;
+}
+button{
+    font-size: 15px;
 }
